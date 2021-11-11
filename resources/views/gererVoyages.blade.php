@@ -42,7 +42,12 @@ Voyages disponibles
         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
             Ville : {{$unVoyage->ville}}
         </td>
-
+        <br>
+                        <!-- Affichage du type du voyage -->
+       {{-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5">
+            Categorie : {{$saCategorie->categorie}}
+        </td>
+        --}}
         <!-- Bouton ajout au panier  -->
         <div class="col-5">
             <a title='Ajouter au panier' class='btn btn-primary btn-sm' href="">Ajouter au Panier</a>
@@ -51,4 +56,5 @@ Voyages disponibles
 
     </div>
     @endforeach
+
     @endsection

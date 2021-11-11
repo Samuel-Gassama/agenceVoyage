@@ -20,5 +20,9 @@
             <div class="col-4">
                 Le voyage débute en {{$unVoyage->dateDebut}}
             </div></br>
+            <div class="col-4">
+                La catégorie du voyage est {{$saCategorie->categorie}}
+            </div></br>
+
      </body>
 </html>
