@@ -16,6 +16,7 @@ class voyageController extends Controller
         $tousLesVoyages = voyage::all();
         return view('gererVoyages')->with("tousLesVoyages", $tousLesVoyages);
     }
+    
 
     public function afficherVoyages($id){
 

@@ -2,21 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyageController;
+
+
+
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| ROUTES ACCUEIL
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-
 
 
 Route::get('/', [voyageController::class,'listeVoyage'])->name('liste.voyage');
 
+/*
+|--------------------------------------------------------------------------
+| ROUTES VOYAGES
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/voyages', 
         [voyageController::class, 'gererVoyages'])->name('gerer.voyages');
@@ -24,3 +26,14 @@ Route::get('/voyages',
  Route::get('/voyages/{id}', 
         [voyageController::class, 'afficherVoyages'])->name('afficher.voyages');
 
+/*
+|--------------------------------------------------------------------------
+| ROUTES PANIER
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/panier', 
+        [voyageController::class, 'panier'])->name('afficher.panier');
+
+ Route::get('/ajouterPanier', 
+        [voyageController::class, 'ajoutPanier'])->name('ajouter.panier');
