@@ -8,7 +8,7 @@ use App\Models\categorie;
 
 class voyageController extends Controller
 {
-    // Méthode pour afficher les voyages 
+    // Méthode pour afficher tous les voyages 
 
     public function gererVoyages()
     {
@@ -17,6 +17,8 @@ class voyageController extends Controller
         return view('gererVoyages')->with("tousLesVoyages", $tousLesVoyages);
     }
     
+    // Méthode pour afficher les voyages et les éléments liés par rapport à l'id
+
 
     public function afficherVoyages($id){
 
@@ -29,7 +31,10 @@ class voyageController extends Controller
                                       -> with('saCategorie', $saCategorie);
 
     }
-
-
+        
 }
+    
+    
+
+
 

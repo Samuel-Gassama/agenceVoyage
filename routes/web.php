@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyageController;
+use App\Http\Controllers\panierController;
 
 
 
@@ -12,7 +13,6 @@ use App\Http\Controllers\voyageController;
 */
 
 
-Route::get('/', [voyageController::class,'listeVoyage'])->name('liste.voyage');
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Route::get('/', [voyageController::class,'listeVoyage'])->name('liste.voyage');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/voyages', 
+Route::get('/', 
         [voyageController::class, 'gererVoyages'])->name('gerer.voyages');
 
  Route::get('/voyages/{id}', 
@@ -33,7 +33,7 @@ Route::get('/voyages',
 */
 
 Route::get('/panier', 
-        [voyageController::class, 'panier'])->name('afficher.panier');
+        [panierController::class, 'panier'])->name('afficher.panier');
 
- Route::get('/ajouterPanier', 
-        [voyageController::class, 'ajoutPanier'])->name('ajouter.panier');
+ Route::post('/ajoutPanier', 
+        [panierController::class, 'ajoutPanier'])->name('ajout.panier');
