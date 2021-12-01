@@ -20,8 +20,8 @@ Voyages disponibles
                 <th scope="col">Ville</th>
                 <th scope="col">Catégorie</th>
                 <th>
-                <a href="#" class="btn btn-info btn-lg">
-                <span class="glyphicon glyphicon-shopping-cart"></span> Panier
+                <a  class="btn btn-info btn-lg" href="/panier">Panier
+                <span class="glyphicon glyphicon-shopping-cart"></span> 
                 </a> 
             </th>
 
@@ -38,7 +38,7 @@ Voyages disponibles
                     <td>{{ $unVoyage->categorie }}</td>
 
                     <td>  <div class="col-5">
-                     <a title='Ajouter au panier' class='btn btn-primary btn-sm' href="{ url('/ajoutPanier'.$unVoyage->id) }}"">Ajouter au Panier</a>
+                     <a title='Ajouter au panier' class='btn btn-primary btn-sm' href="{{ route('ajout.panier', $unVoyage->id) }}">Ajouter au Panier</a>
                      </div>
                 </tr>
             @endforeach

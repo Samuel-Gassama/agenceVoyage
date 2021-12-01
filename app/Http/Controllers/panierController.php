@@ -12,8 +12,7 @@ class panierController extends Controller
 
     public function panier(){
 
-        $voyage = voyage::all();
-        return view('panier')->with('voyage',$voyage);
+        return view('panier');
     }
 
     //
@@ -22,20 +21,20 @@ class panierController extends Controller
 
         $leVoyage = voyage::findOrFail($id);
         
-        $panier = session()->get('panier', []);
+        $panier = session()->get('panier', []); // Met le voyage choisit dans le panier 
        
 
             $panier[$id] = [
-                "nom" => $leVoyage->nomVoyage,
-                "quantity" => 1,
-                "price" => $leVoyage->prix,
-                "quantitePersonne" => 1,
-
+                "nomVoyage" => $leVoyage->nomVoyage,
+                "prix" => $leVoyage->prix,
+                "quantite" => 1,
+                "nbVoyageurs" => 1,
             
             ];
         
         session()->put('panier', $panier);
-        return redirect()->back()->with('succès', 'Le voyage à bien été ajouter au panier !');
+
+        return redirect ('panier')->with('succès', 'Le voyage à bien été ajouter au panier !');
     
         }
 
@@ -45,11 +44,30 @@ class panierController extends Controller
     {
         if($request->id && $request->quantity){
             $panier = session()->get('panier');
-            $panier[$request->id]["quantité"] = $request->quantity;
+            $panier[$request->id]["quantite"] = $request->quantity;
             session()->put('panier', $panier);
             session()->flash('succès', 'Panier modifié avec succès');
         }
     }
 
+    public function AjouterVoyageurs($id, Request $request)
+    {
+        if(isset($panier[$id])) {
+            $panier[$id]['nbVoyageurs']++;
+            session()->put('cart', $panier);
+            return redirect()->back()->with('success', 'Voyageur ajouté avec succès');
+        }
+    }
+
+
+    public function enleverVoyageurs($id, Request $request)
+    {
+        if(isset($panier[$id])) {
+            $panier[$id]['nbVoyageurs']--;
+            session()->put('cart', $panier);
+            return redirect()->back()->with('success', 'Voyageur retiré avec succès');
+        }
+    }
 }
+
 

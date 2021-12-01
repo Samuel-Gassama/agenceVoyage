@@ -33,7 +33,9 @@ Route::get('/',
 */
 
 Route::get('/panier', 
-        [panierController::class, 'panier'])->name('afficher.panier');
+        [panierController::class, 'panier'])->name('panier');
 
- Route::post('/ajoutPanier', 
+ Route::get('/ajoutPanier/{id}', 
         [panierController::class, 'ajoutPanier'])->name('ajout.panier');
+
+

@@ -8,7 +8,8 @@ use App\Models\categorie;
 
 class voyageController extends Controller
 {
-    // Méthode pour afficher tous les voyages 
+
+    //Méthode pour afficher tous les voyages 
 
     public function gererVoyages()
     {
