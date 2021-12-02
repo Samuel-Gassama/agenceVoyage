@@ -38,4 +38,38 @@ Route::get('/panier',
  Route::get('/ajoutPanier/{id}', 
         [panierController::class, 'ajoutPanier'])->name('ajout.panier');
 
+Route::get('/supprimerVoyage/{id}',
+        [panierController::class, 'supprimerVoyage'])-> name('supprimer.voyage');
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES NOMBREVOYAGEURS
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/ajoutVoyageurs/{id}', 
+        [panierController::class, 'ajouterVoyageurs'])->name('ajouter.voyageurs');
+
+ Route::get('/enleverVoyageurs/{id}', 
+        [panierController::class, 'enleverVoyageurs'])->name('enlever.voyageurs');
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES QUANTITE
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/ajoutQuantite/{id}', 
+        [panierController::class, 'ajouterQuantite'])->name('ajouter.quantite');
+
+ Route::get('/enleverQuantite/{id}', 
+        [panierController::class, 'enleverQuantite'])->name('enlever.quantite');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES CONNEXION
+|--------------------------------------------------------------------------
+*/
 

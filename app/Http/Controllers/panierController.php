@@ -38,6 +38,23 @@ class panierController extends Controller
     
         }
 
+
+    public function supprimerVoyage(Request $request)
+    {
+        $panier = session()->get('panier', []);
+
+        if($request->id) {
+            $panier = session()->get('panier');
+            if(isset($panier[$request->id])) {
+                unset($panier[$request->id]);
+                session()->put('panier', $panier);
+            }
+            session()->flash('success', 'Product removed successfully');
+            return redirect()->back();
+
+        }
+    }
+
     // Méthode pour mettre à jour le panier 
 
     public function update(Request $request)
@@ -49,25 +66,60 @@ class panierController extends Controller
             session()->flash('succès', 'Panier modifié avec succès');
         }
     }
+ 
+    // Méthode pour ajouter un voyageur au voyage dans le panier 
 
-    public function AjouterVoyageurs($id, Request $request)
+    public function ajouterVoyageurs($id)
     {
+        $panier = session()->get('panier', []);
+
         if(isset($panier[$id])) {
             $panier[$id]['nbVoyageurs']++;
-            session()->put('cart', $panier);
-            return redirect()->back()->with('success', 'Voyageur ajouté avec succès');
+            session()->put('panier', $panier);
+            return redirect()->back();
         }
     }
 
+    // Méthode pour enlever un voyageur au voyage dans le panier 
 
     public function enleverVoyageurs($id, Request $request)
     {
+        $panier = session()->get('panier', []);
+
         if(isset($panier[$id])) {
             $panier[$id]['nbVoyageurs']--;
-            session()->put('cart', $panier);
-            return redirect()->back()->with('success', 'Voyageur retiré avec succès');
+            session()->put('panier', $panier);
+            return redirect()->back();
         }
     }
+
+    // Méthode pour augmenter la quantité d'un voyage dans le panier
+
+    public function ajouterQuantite($id, Request $request)
+    {
+        $panier = session()->get('panier', []);
+
+        if(isset($panier[$id])) {
+            $panier[$id]['quantite']++;
+            session()->put('panier', $panier);
+            return redirect()->back();
+        }
+    }
+
+
+    // Méthode pour baisser la quantité d'un voyage dans le panier
+
+    public function enleverQuantite($id, Request $request)
+    {
+        $panier = session()->get('panier', []);
+
+        if(isset($panier[$id])) {
+            $panier[$id]['quantite']--;
+            session()->put('panier', $panier);
+            return redirect()->back();
+        }
+    }
+
 }
 
 
