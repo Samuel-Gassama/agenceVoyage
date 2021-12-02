@@ -17,8 +17,8 @@ Panier
 
 <div class="topnav">
   <a class="active" href='/'>Accueil</a>
-  <a href="#news">Connexion</a>
-  <a href="#contact">Contact</a>
+  <a href="/register">Connexion</a>
+  <a href="">Contact</a>
   <a href="#about">À propos</a>
 </div>
 

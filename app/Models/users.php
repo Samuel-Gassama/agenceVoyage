@@ -25,7 +25,7 @@ class users extends Authenticatable
 
         'password',
         'remembered_token',
-    ];
+    ]; 
 
 
 }

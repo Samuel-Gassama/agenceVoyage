@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyageController;
 use App\Http\Controllers\panierController;
@@ -73,3 +74,5 @@ Route::get('/ajoutQuantite/{id}',
 |--------------------------------------------------------------------------
 */
 
+Route::get('/home',
+        [HomeController::class, 'index']);
