@@ -15,7 +15,7 @@ class panierController extends Controller
         return view('panier');
     }
 
-    //
+    
 
     public function ajoutPanier($id){
 
@@ -120,6 +120,10 @@ class panierController extends Controller
         }
     }
 
+    public function validerCommande(){
+
+        
+    }
 }
 
 

@@ -28,8 +28,7 @@ class voyageController extends Controller
         $lesVoyages = $unVoyage->lesVoyages;
         $saCategorie =$unVoyage->saCategorie;
 
-        return view('afficherVoyages')-> with('unVoyage', $unVoyage)
-                                      -> with('saCategorie', $saCategorie);
+        return view('gererVoyages')-> with('saCategorie', $saCategorie);
 
     }
         
