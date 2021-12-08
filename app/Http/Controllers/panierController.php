@@ -3,20 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\vente;
 use App\Models\voyage;
+use App\Models\Paiement;
+use DateTime;
 
-
+ 
 class panierController extends Controller
 {
 
 
     public function panier(){
 
+        $panier = session()->get('panier', []);
+
         return view('panier');
     }
 
     
-
+    // Fonction pour ajouter un voyage au panier 
+    
     public function ajoutPanier($id){
 
         $leVoyage = voyage::findOrFail($id);
@@ -38,7 +44,7 @@ class panierController extends Controller
     
         }
 
-
+        // Fonction pour supprimer un voyage du panier 
     public function supprimerVoyage(Request $request)
     {
         $panier = session()->get('panier', []);
@@ -109,7 +115,7 @@ class panierController extends Controller
 
     // Méthode pour baisser la quantité d'un voyage dans le panier
 
-    public function enleverQuantite($id, Request $request)
+    public function enleverQuantite($id)
     {
         $panier = session()->get('panier', []);
 
@@ -119,11 +125,44 @@ class panierController extends Controller
             return redirect()->back();
         }
     }
+//Fonction pour valider la commande qui est dans le panier 
+public function valider(){
 
-    public function validerCommande(){
 
-        
-    }
+        $panier = session()->get('panier', []);
+        $client = session()->get('client', []);
+
+
+        foreach($panier as $UnPanier){
+            $nouvelleVente = new Vente();
+            $date = new DateTime();
+            $nouvelleVente->timestamps = false;
+            $nouvelleVente->voyage_id= $UnPanier["voyage_id"];
+            $nouvelleVente->nbVoyageurs = $UnPanier["nbVoyageurs"];
+            $nouvelleVente->client_id = $client["id"];
+            $nouvelleVente->dateVente = $date;
+            $nouvelleVente->save(); 
+        }
+
+        $dernierId= $nouvelleVente->id;
+
+        foreach($panier as $UnPanier){
+            $date = new DateTime();
+
+            $nouveauPaiement = new Paiement();
+            $nouveauPaiement->timestamps = false;
+            $nouveauPaiement->montantPaiement = $UnPanier['prix'] * $UnPanier["nbVoyageurs"];
+            $nouveauPaiement->datePaiement = $date;
+            $nouveauPaiement->vente_id = $dernierId;
+            $nouveauPaiement->save();
+
+        }
+
+        $panier = session()->flush('panier', []);
+
+       // return redirect('/')->with('message', 'Commande validé avec succès');
+       return redirect('/');
+    }   
 }
 
 

@@ -12,10 +12,19 @@ Voyages disponibles
 
 <div class="topnav">
   <a class="active" href='/'>Accueil</a>
-  <a  href='/register' >Connexion</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">À propos</a>
+  
+
+  @if(session('client'))
+  <a  href="{{ url('/logout') }}" >Se deconnecter</a>
+  @else
+  <a  href='/register' >Créer compte</a>
+  <a  href='/login' >Connexion</a>
+  @endif
+
 </div>
+@if(session('client'))
+Statut : Connecté 
+@endif
 
 <table class="table table-bordered table-responsive-lg table-hover">
         <thead class="thead-dark">

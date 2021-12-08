@@ -14,15 +14,23 @@ Panier
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-
+<body>
 <div class="topnav">
   <a class="active" href='/'>Accueil</a>
-  <a href="/register">Connexion</a>
-  <a href="">Contact</a>
-  <a href="#about">À propos</a>
+  
+
+  @if(session('client'))
+  <a  href="{{ url('/logout') }}" >Se deconnecter</a>
+  @else
+  <a  href='/register' >Créer compte</a>
+  <a  href='/login' >Connexion</a>
+
+  @endif
 </div>
 
-
+@if(session('client'))
+Statut : Connecté 
+@endif
 
 
 <table class="table table-bordered table-responsive-lg table-hover">
@@ -67,9 +75,11 @@ Panier
         
         </tbody>
     </table>
-    <button type="button" class="btn btn-default btn-lg"> Valider ma commande <span href=""></span></button> </td> 
-<body>
- 
+    <button type="submit" class="btn btn-default btn-lg"><a href="    ">Valider ma commande</a></button>     <!-- cette route fait buguer tout mon site -->
+
+</body>
+
+@endsection
 
 
 

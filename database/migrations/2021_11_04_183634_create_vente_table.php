@@ -14,8 +14,8 @@ class CreateVenteTable extends Migration
     public function up()
     {
         Schema::create('vente', function (Blueprint $table) {
-            $table->integer('id')->primary();
-            $table->string('dateVente', 10)->nullable();
+            $table->increments('id')->primary();
+            $table->string('dateVente', 40)->nullable();
             $table->integer('client_id')->nullable()->index('client_id');
             $table->integer('voyage_id')->nullable()->index('voyage_id');
         });

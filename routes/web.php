@@ -6,6 +6,10 @@ use App\Http\Controllers\voyageController;
 use App\Http\Controllers\panierController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\clientController;
+
+
 
 
 
@@ -20,7 +24,7 @@ use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
-| ROUTES VOYAGES
+| ROUTES AFFICHAGE VOYAGES
 |--------------------------------------------------------------------------
 */
 
@@ -47,7 +51,7 @@ Route::get('/supprimerVoyage/{id}',
 
 /*
 |--------------------------------------------------------------------------
-| ROUTES NOMBREVOYAGEURS
+| ROUTES PANIER | NOMBREVOYAGEURS
 |--------------------------------------------------------------------------
 */
 
@@ -59,7 +63,7 @@ Route::get('/ajoutVoyageurs/{id}',
 
 /*
 |--------------------------------------------------------------------------
-| ROUTES QUANTITE
+| ROUTES PANIER | QUANTITE VOYAGES
 |--------------------------------------------------------------------------
 */
 
@@ -69,13 +73,35 @@ Route::get('/ajoutQuantite/{id}',
  Route::get('/enleverQuantite/{id}', 
         [panierController::class, 'enleverQuantite'])->name('enlever.quantite');
 
-
-
 /*
 |--------------------------------------------------------------------------
 | ROUTES CONNEXION
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home',
-        [HomeController::class, 'index']);
+Route::get('/register', 
+        [clientController::class, 'register']);
+
+
+Route::post('creerClient',
+        [clientController::class, 'creerClient']);
+
+Route::get('/login',
+        [clientController::class, 'login']);
+
+Route::get('/logout',
+        [clientController::class, 'logout']);
+
+
+Route::post('connexion',
+        [clientController::class, 'connexion']);
+
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES COMMANDE
+|--------------------------------------------------------------------------
+*/
+
+Route::get('valider',
+        [panierController::class, 'valider']);

@@ -7,6 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,11 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+
+
+
+    protected $namespace = 'App\Http\Controllers';
+
 
     /**
      * The controller namespace for the application.
