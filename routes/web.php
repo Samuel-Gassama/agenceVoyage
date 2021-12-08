@@ -12,6 +12,8 @@ use App\Http\Controllers\clientController;
 
 
 
+Route::get('/valider',
+        [panierController::class, 'valider'])->name('valider');
 
 
 /*
@@ -103,5 +105,3 @@ Route::post('connexion',
 |--------------------------------------------------------------------------
 */
 
-Route::get('valider',
-        [panierController::class, 'valider']);

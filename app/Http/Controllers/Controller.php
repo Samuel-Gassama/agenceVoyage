@@ -1,5 +1,9 @@
 <?php
 
+// Nom fichier : Controller
+// Auteur : Laravel
+// Date : 
+// Version : Last version 
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

@@ -1,4 +1,12 @@
 
+<!-- Nom fichier : panier.blade.php
+Auteur : Samuel GASSAMA
+Date : 08 Décembre 2021
+Version : 1.5 (Final version) -->
+
+
+
+
 @extends('template')
 @section('titre')
 Panier
@@ -75,7 +83,7 @@ Statut : Connecté
         
         </tbody>
     </table>
-    <button type="submit" class="btn btn-default btn-lg"><a href="    ">Valider ma commande</a></button>     <!-- cette route fait buguer tout mon site -->
+    <button type="submit" class="btn btn-default btn-lg"><a href="{{url('valider')}}">Valider ma commande</a></button>     <!-- cette route fait buguer tout mon site -->
 
 </body>
 

@@ -1,3 +1,8 @@
+<!-- Nom fichier : afficherVoyage.blade.php
+Auteur : Samuel GASSAMA
+Date : 08 Décembre 2021
+Version : 1.5 (Final version) -->
+
 <!doctype html>
 <html lang="fr">
     <head>

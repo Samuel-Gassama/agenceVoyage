@@ -1,3 +1,9 @@
+
+<!-- Nom fichier : login.blade.php
+Auteur : Samuel GASSAMA
+Date : 08 Décembre 2021
+Version : 1.5 (Final version) -->
+
 @extends('app')
 
 <div class="topnav">

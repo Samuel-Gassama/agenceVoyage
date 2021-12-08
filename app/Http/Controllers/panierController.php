@@ -1,5 +1,11 @@
 <?php
 
+// Nom fichier : panierController
+// Auteur : Samuel GASSAMA
+// Date : 08 Décembre 2021
+// Version : 1.5 (Final version)
+ 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -22,7 +28,7 @@ class panierController extends Controller
 
     
     // Fonction pour ajouter un voyage au panier 
-    
+
     public function ajoutPanier($id){
 
         $leVoyage = voyage::findOrFail($id);
@@ -128,7 +134,7 @@ class panierController extends Controller
 //Fonction pour valider la commande qui est dans le panier 
 public function valider(){
 
-
+        dd('ici');
         $panier = session()->get('panier', []);
         $client = session()->get('client', []);
 
