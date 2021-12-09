@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\voyageController;
@@ -10,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\paiementController;
 
-Route::get('/valider',
-        [panierController::class, 'valider'])->name('valider');
 
 
 /*
@@ -19,6 +18,20 @@ Route::get('/valider',
 | ROUTES ACCUEIL
 |--------------------------------------------------------------------------
 */
+/*
+|--------------------------------------------------------------------------
+| ROUTES COMMANDE
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get('/valider',
+        [paiementController::class, 'valider'])->name('valider');
+
+
+Route::get('/paiement',
+        [paiementController::class, 'paiement'])->name('paiement');
+
 
 
 
@@ -97,11 +110,13 @@ Route::post('connexion',
         [clientController::class, 'connexion']);
 
 
+
 /*
 |--------------------------------------------------------------------------
-| ROUTES COMMANDE
+| ROUTES ADMIN
 |--------------------------------------------------------------------------
 */
 
-Route::get('/paiement',
-        [paiementController::class, 'paiement'])->name('paiement');
+
+Route::get('admin',
+        [adminController::class, 'admin'])-> name('admin');

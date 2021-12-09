@@ -17,7 +17,10 @@ use Symfony\Component\HttpFoundation\RateLimiter\RequestRateLimiterInterface;
 class clientController extends Controller
 {
 
-
+    public function afficherClients(){
+        $tousLesClients = client::all();
+        return view('pageAdmin')->with('tousLesClients', $tousLesClients);
+    }
     // fonction qui retourne la page de création de compte 
 
     public function register(){
@@ -79,7 +82,7 @@ public function connexion(Request $request){
 
     $fields = $request->validate([
         'courriel' => 'required|string|email',
-        'motdepasse' => 'required|string|numeric'
+        'motdepasse' => 'required|string|'
     ]);
 
 

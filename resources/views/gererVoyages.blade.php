@@ -25,7 +25,6 @@ Voyages disponibles
 @if(session('client'))
 Statut : Connecté 
 @endif
-
 <table class="table table-bordered table-responsive-lg table-hover">
         <thead class="thead-dark">
             <tr>
