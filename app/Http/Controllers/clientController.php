@@ -106,7 +106,7 @@ public function connexion(Request $request){
 
         session()->get('client');
 
-        $request->session()->flush();
+        $request->session('client')->flush();
         return redirect()->back();
     }
 

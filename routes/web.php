@@ -8,9 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\clientController;
-
-
-
+use App\Http\Controllers\paiementController;
 
 Route::get('/valider',
         [panierController::class, 'valider'])->name('valider');
@@ -105,3 +103,5 @@ Route::post('connexion',
 |--------------------------------------------------------------------------
 */
 
+Route::get('/paiement',
+        [paiementController::class, 'paiement'])->name('paiement');

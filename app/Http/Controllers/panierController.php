@@ -27,6 +27,7 @@ class panierController extends Controller
     }
 
     
+    
     // Fonction pour ajouter un voyage au panier 
 
     public function ajoutPanier($id){
@@ -41,6 +42,7 @@ class panierController extends Controller
                 "prix" => $leVoyage->prix,
                 "quantite" => 1,
                 "nbVoyageurs" => 1,
+                "voyage_id" =>$leVoyage->id
             
             ];
         
@@ -132,43 +134,7 @@ class panierController extends Controller
         }
     }
 //Fonction pour valider la commande qui est dans le panier 
-public function valider(){
 
-        dd('ici');
-        $panier = session()->get('panier', []);
-        $client = session()->get('client', []);
-
-
-        foreach($panier as $UnPanier){
-            $nouvelleVente = new Vente();
-            $date = new DateTime();
-            $nouvelleVente->timestamps = false;
-            $nouvelleVente->voyage_id= $UnPanier["voyage_id"];
-            $nouvelleVente->nbVoyageurs = $UnPanier["nbVoyageurs"];
-            $nouvelleVente->client_id = $client["id"];
-            $nouvelleVente->dateVente = $date;
-            $nouvelleVente->save(); 
-        }
-
-        $dernierId= $nouvelleVente->id;
-
-        foreach($panier as $UnPanier){
-            $date = new DateTime();
-
-            $nouveauPaiement = new Paiement();
-            $nouveauPaiement->timestamps = false;
-            $nouveauPaiement->montantPaiement = $UnPanier['prix'] * $UnPanier["nbVoyageurs"];
-            $nouveauPaiement->datePaiement = $date;
-            $nouveauPaiement->vente_id = $dernierId;
-            $nouveauPaiement->save();
-
-        }
-
-        $panier = session()->flush('panier', []);
-
-       // return redirect('/')->with('message', 'Commande validé avec succès');
-       return redirect('/');
-    }   
 }
 
 

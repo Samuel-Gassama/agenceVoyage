@@ -83,7 +83,7 @@ Statut : Connecté
         
         </tbody>
     </table>
-    <button type="submit" class="btn btn-default btn-lg"><a href="{{url('valider')}}">Valider ma commande</a></button>     <!-- cette route fait buguer tout mon site -->
+    <button type="submit" class="btn btn-default btn-lg"><a href="{{url('paiement')}}">Aller au paiement</a></button>     <!-- cette route fait buguer tout mon site -->
 
 </body>
 
